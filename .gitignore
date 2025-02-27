@@ -3,6 +3,10 @@
 ##
 ## Get latest from https://github.com/github/gitignore/blob/main/VisualStudio.gitignore
 
+# WuXiaDX12
+*.vcxproj
+*.filters
+
 # User-specific files
 *.rsuser
 *.suo
