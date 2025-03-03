@@ -143,7 +143,7 @@ bool __GetWuXiaProcess() {
 
 				std::cout << "\n" << std::endl;
 
-				std::cout << "\t如果对你有帮助 可以给我的项目点个Start https://github.com/cxy128/WuXiaDX12\t" << std::endl;
+				std::cout << "\t如果对你有帮助 可以给我的项目点个Star https://github.com/cxy128/WuXiaDX12\t" << std::endl;
 
 				std::cout << "\n" << std::endl;
 
