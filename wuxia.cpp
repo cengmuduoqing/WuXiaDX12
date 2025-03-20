@@ -9,7 +9,7 @@ void __WuXia() {
 	for (;;) {
 
 		if (!__GetWuXiaProcess()) {
-			std::cout << "等待游戏启动" << std::endl;
+			std::cout << "等待游戏启动 (使用DX12版本客户端启动)" << std::endl;
 		}
 
 		KiDelayExecutionThread(10);
@@ -132,14 +132,6 @@ bool __GetWuXiaProcess() {
 				std::cout << "\n\n" << std::endl;
 
 				std::cout << "\t渲染成功 等待下一次游戏启动\t" << std::endl;
-
-				std::cout << "\n" << std::endl;
-
-				std::cout << "\t如需保存设置, 需要在EXE同级目录下存在文件夹: data\t" << std::endl;
-
-				std::cout << "\n" << std::endl;
-
-				std::cout << "\tCtrl+Shift+Q 隐藏渲染窗口\t" << std::endl;
 
 				std::cout << "\n" << std::endl;
 
