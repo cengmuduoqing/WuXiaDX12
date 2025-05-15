@@ -131,7 +131,7 @@ bool __GetWuXiaProcess() {
 
 				std::cout << "\n\n" << std::endl;
 
-				std::cout << "\t渲染成功 等待下一次游戏启动\t" << std::endl;
+				std::cout << "\t渲染成功 (窗口可关闭)\t" << std::endl;
 
 				std::cout << "\n" << std::endl;
 
