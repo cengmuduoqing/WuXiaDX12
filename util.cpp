@@ -1,4 +1,5 @@
 #include <sstream>
+#include <algorithm>
 #include "util.h"
 
 bool InitSystemRoutineAddress() {
@@ -253,4 +254,30 @@ bool MappingModule(HANDLE ProcessHandle, unsigned __int64 ImageBase, void* f, un
 	*ParameterAddress = reinterpret_cast<unsigned __int64>(ParameterAddressBuffer);
 
 	return true;
+}
+
+Mode ParseMode(int argc, char* argv[]) {
+
+	for (int i = 1; i < argc - 1; ++i) {
+
+		std::string arg = argv[i];
+
+		if (arg == "-Mode") {
+
+			std::string value = argv[i + 1];
+
+			std::transform(value.begin(), value.end(), value.begin(), ::tolower);
+
+			if (value == "internal") {
+
+				return Mode::Internal;
+
+			} else if (value == "external") {
+
+				return Mode::External;
+			}
+		}
+	}
+
+	return Mode::Unknown;
 }

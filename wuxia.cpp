@@ -1,6 +1,30 @@
 #include "wuxia.h"
 
-void __WuXia() {
+void __WuXia(int argc, char* argv[]) {
+
+	FilePath = argv[0];
+
+	Mode mode = ParseMode(argc, argv);
+
+	switch (mode) {
+
+		case Mode::Internal:
+
+			DrawMode = 'I';
+
+			break;
+
+		case Mode::External:
+
+			DrawMode = 'E';
+
+			break;
+
+		default: {
+
+			break;
+		}
+	}
 
 	if (!InitSystemRoutineAddress()) {
 		return;
@@ -9,7 +33,7 @@ void __WuXia() {
 	for (;;) {
 
 		if (!__GetWuXiaProcess()) {
-			std::cout << "等待游戏启动 (使用DX12版本客户端启动)" << std::endl;
+			std::cout << "等待游戏启动 (建议进入大世界后, 再启动程序, 仅支持DX12客户端)" << std::endl;
 		}
 
 		KiDelayExecutionThread(10);
@@ -99,9 +123,17 @@ bool __GetWuXiaProcess() {
 					continue;
 				}
 
-				auto PebSparePointers = reinterpret_cast<void**>(WuXiaPeb + 0x328);
+				auto PebSparePointers_0x328 = reinterpret_cast<void**>(WuXiaPeb + 0x328);
 				NumberOfBytesWritten = 0;
-				Status = ZwWriteVirtualMemory(ProcessHandle, PebSparePointers, &CurrentDirectoryAddress, 8, &NumberOfBytesWritten);
+				Status = ZwWriteVirtualMemory(ProcessHandle, PebSparePointers_0x328, &CurrentDirectoryAddress, 8, &NumberOfBytesWritten);
+				if (NT_ERROR(Status)) {
+					CloseHandle(ProcessHandle);
+					continue;
+				}
+
+				auto PebSparePointers_0x320 = reinterpret_cast<void**>(WuXiaPeb + 0x320);
+				NumberOfBytesWritten = 0;
+				Status = ZwWriteVirtualMemory(ProcessHandle, PebSparePointers_0x320, &DrawMode, 1, &NumberOfBytesWritten);
 				if (NT_ERROR(Status)) {
 					CloseHandle(ProcessHandle);
 					continue;

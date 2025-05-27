@@ -3,9 +3,7 @@
 
 int main(int argc, char* argv[]) {
 
-	FilePath = argv[0];
-
-	__WuXia();
+	__WuXia(argc, argv);
 
 	return 0;
 }

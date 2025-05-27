@@ -20,6 +20,12 @@ constexpr auto STATUS_SUCCESS = 0;
 
 #define NT_ERROR(Status) ((((ULONG)(Status)) >> 30) == 3)
 
+enum class Mode {
+	Unknown,
+	Internal,
+	External
+};
+
 enum class SYSTEM_INFORMATION_CLASS :unsigned __int32 {
 
 	SystemProcessInformation = 0x5,
@@ -189,3 +195,5 @@ bool InitMappingParameter(MappingParameter* Parameter, void* ImageBase);
 unsigned __int64 LoadModule(const wchar_t* FileName);
 
 bool MappingModule(HANDLE ProcessHandle, unsigned __int64 ImageBase, void* f, unsigned __int64* call_f, unsigned __int64* ParameterAddress);
+
+Mode ParseMode(int argc, char* argv[]);

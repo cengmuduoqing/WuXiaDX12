@@ -12,7 +12,9 @@ inline std::set<HANDLE> WuXiaId = {};
 
 inline std::string FilePath = {};
 
-void __WuXia();
+inline __int8 DrawMode = 'I';
+
+void __WuXia(int argc, char* argv[]);
 
 bool __GetWuXiaProcess();
 
